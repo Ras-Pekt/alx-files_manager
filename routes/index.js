@@ -1,6 +1,7 @@
 import express from 'express';
 import AppController from '../controllers/AppController';
-import { postNew } from '../controllers/UsersController';
+import { postNew, getMe } from '../controllers/UsersController';
+import { getConnect, getDisconnect } from '../controllers/AuthController';
 
 export default function Routes(app) {
   const router = express.Router();
@@ -16,5 +17,17 @@ export default function Routes(app) {
 
   router.post('/users', (req, res) => {
     postNew(req, res);
+  });
+
+  router.get('/connect', (req, res) => {
+    getConnect(req, res);
+  });
+
+  router.get('/disconnect', (req, res) => {
+    getDisconnect(req, res);
+  });
+
+  router.get('/users/me', (req, res) => {
+    getMe(req, res);
   });
 }
