@@ -21,7 +21,7 @@ export async function postNew(req, res) {
         error: 'Missing password',
       });
     }
-    
+
     let existingEmail = await dbClient.db.collection('users').findOne({ email: userEmail });
     if (existingEmail) {
       return res.status(400).send({
